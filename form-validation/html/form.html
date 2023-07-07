@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/form.css">
+</head>
+<body>
+    <div class="container">
+        <div class="section log-in__body" style="margin-top: 80px;">
+            <div class="form__container">
+                <form action="" class="account-form log-in-form">
+                    <h1 class="form__title">TẠO TÀI KHOẢN</h1>
+                    <div class="form__group">
+                        <div>
+                            <div>
+                                <input type="text" class="form__input fullname" placeholder=" ">
+                            </div>
+                        </div>
+                        <label for="">Tên đăng nhập</label>
+                        <span class="form__message"></span>
+                    </div>
+                    <div class="form__group">
+                        <input type="text" class="form__input email" placeholder=" ">
+                        <label for="">Email</label>
+                        <span class="form__message"></span>
+                    </div>
+                    <div class="form__group">
+                        <input type="text" class="form__input password" placeholder=" ">
+                        <label for="">Mật khẩu</label>
+                        <span class="form__message"> </span>
+                    </div>
+                    <div class="form__group">
+                        <input type="text" class="form__input confirm_password" placeholder=" ">
+                        <label for="">Nhập lại mật khẩu</label>
+                        <span class="form__message"> </span>
+                    </div>
+                    <button class="form__btn" type="submit">Tạo tài khoản</button>
+                </form>
+                <h5>Bạn cũng có thể đăng nhập bằng các cách sau</h5>
+                <ul class="social__icon__list flex">
+                    <li class="nav__item"><i class="fa-brands fa-google"></i></li>
+                    <li class="nav__item"><i class="fa-brands fa-facebook"></i></li>
+                    <li class="nav__item"><i class="fa-brands fa-github"></i></li>
+                    <li class="nav__item"><i class="fa-brands fa-instagram"></i></li>
+                    <li class="nav__item"><i class="fa-brands fa-twitter"></i></li>
+                </ul>
+                <h5>Bạn đã có tài khoản ? <a href="/html/log-in.html">Đăng nhập ngay</a></h5>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/validator.js"></script>
+<script>
+    Validator({
+        formSelector: '.account-form', 
+        formMessage: '.form__message',
+        rules: [
+            Validator.isRequired('.fullname'),
+            Validator.isRequired('.email'),
+            Validator.isEmail('.email'),
+            Validator.isRequired('.password'),
+            Validator.isPassword('.password' , 8),
+            Validator.isRequired('.confirm_password'),
+            Validator.isConfirm('.confirm_password' , () => {
+                return document.querySelector('.account-form .confirm_password').value
+            })
+        ]
+    })
+</script>
+</html>

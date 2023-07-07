@@ -1,0 +1,249 @@
+:root {
+    --maincolor: #00c2ff;
+    --backgroundcolor: linear-gradient(0deg, #0043a8 0%, #00114b 100%);
+    --overlaycolor: linear-gradient(270deg, #000000 0%, #d9d9d9 50.52%, #000000 100%);
+    --lightheaderitemhovercolor: #050728;
+    --hover: #ff9900;
+    --pricecolor: #4d4444;
+    --backgroundblur: #4282ff;
+    --banner-height: 65%;
+    --labelcolor: #2C2C2C;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+input,
+select,
+textarea {
+    background-color: transparent;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    border: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1;
+}
+
+
+.form__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    background: white;
+    box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.20);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.form__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 48px;
+    letter-spacing: 0.2em;
+    text-align: center;
+    color: var(--lightheaderitemhovercolor);
+}
+
+.log-in__body {
+    display: grid;
+    place-items: center;
+    gap: 20px;
+}
+
+.log-in-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    overflow: hidden;
+}
+
+.form__group {
+    position: relative;
+}
+
+.form__group label {
+    min-width: 200px;
+    position: absolute;
+    top: 30px;
+    transform: translateY(-55%) translateX(-300px);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--labelcolor);
+    user-select: none;
+    pointer-events: none;
+}
+
+.form__group>input {
+    min-width: 320px;
+    background: white;
+    border-radius: 5px;
+    border: 1px solid transparent;
+    border-bottom-color: var(--maincolor);
+    outline: none;
+    color: var(--lightheaderitemhovercolor);
+    padding: 18px 20px;
+    transition: .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.form__group label {
+    transition: .25s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.form__group.invalid>input,
+.form__group.invalid>input:focus,
+.form__group.invalid>input:hover {
+    border: 1px solid red;
+}
+
+.form__group.invalid label {
+    color: red
+}
+
+.form__group.invalid>input:not(:placeholder-shown)+label,
+.form__group.invalid>input:focus+label {
+    color: red;
+}
+
+.form__message {
+    display: block;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    color: #fa5d5d;
+}
+
+.form__group>input:hover {
+    border: 1px solid var(--maincolor);
+}
+
+.form__group>input:focus {
+    border: 1px solid var(--maincolor);
+}
+
+.form__group>input:not(:placeholder-shown)+label,
+.form__group>input:focus+label {
+    top: -10px;
+    color: var(--maincolor);
+}
+
+.log-in-form>.form__btn {
+    width: 100%;
+    padding: 16px;
+    margin: 0;
+    text-align: center;
+    cursor: pointer;
+    background: var(--maincolor);
+    color: white;
+    outline: none;
+    border: 1px solid var(--maincolor);
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav__item {
+    list-style-type: none;
+}
+
+.log-in-form>.form__btn:active {
+    transform: scale(.98);
+}
+
+.forgot {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--labelcolor);
+    position: relative;
+    transition: .25s linear;
+}
+
+.forgot:hover {
+    color: var(--hover);
+}
+
+.forgot::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -110px;
+    background: var(--labelcolor);
+    height: 1px;
+}
+
+.forgot::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -110px;
+    background: var(--labelcolor);
+    height: 1px;
+}
+
+.log-in__body h5,
+.log-in__body h5 a {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: var(--lightheaderitemhovercolor);
+    text-align: center;
+}
+
+.log-in__body h5 a {
+    color: var(--hover);
+}
+
+.log-in__body h5 a:visited {
+    color: var(--hover);
+}
+
+.social__icon__list.flex {
+    gap: 20px;
+}
+
+.social__icon__list .nav__item {
+    transition: .25s linear;
+}
+
+.social__icon__list .nav__item:hover {
+    color: var(--hover);
+}
