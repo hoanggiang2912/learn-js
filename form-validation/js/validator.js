@@ -5,13 +5,21 @@ function Validator (options) {
     const formElement = $(options.formSelector)
     let selectorRules = {}
 
+    function getParentElement (inputElement , parentSelector) {
+        while(inputElement.parentElement) {
+            if (inputElement.parentElement.matches(parentSelector)) {
+                return inputElement.parentElement
+            } else {
+                inputElement = inputElement.parentElement
+            }
+        }
+    }
     if(formElement) {
-
+        
         formElement.onsubmit = e => {
             e.preventDefault();
             options.rules.forEach(rule => {
                 const inputElements = Array.from(formElement.querySelectorAll(rule.selector))
-
                 inputElements.forEach(inputElement => {
                     validate(inputElement , rule)
                 })
@@ -28,8 +36,8 @@ function Validator (options) {
                 }
             }
             if(errorMessage) {
-                inputElement.parentElement.querySelector(options.formMessage).innerText = errorMessage
-                inputElement.parentElement.classList.add('invalid')
+                getParentElement(inputElement , options.formGroupSelector).querySelector(options.formMessage).innerText = errorMessage
+                getParentElement(inputElement , options.formGroupSelector).classList.add('invalid')
             } else {
                 oninputHandler(inputElement)
             }
@@ -37,28 +45,11 @@ function Validator (options) {
 
         // remove all the invalid signal while user fill in the input
         function oninputHandler (inputElement) {
-            inputElement.parentElement.querySelector(options.formMessage).innerText = ''
-            inputElement.parentElement.classList.remove('invalid')
+            getParentElement(inputElement , options.formGroupSelector).querySelector(options.formMessage).innerText = ''
+            getParentElement(inputElement , options.formGroupSelector).classList.remove('invalid')
         }
         
         options.rules.forEach(rule => {
-            // const inputElement = formElement.querySelector(rule.selector)
-            
-            // // save all rules of input
-            // if (Array.isArray(selectorRules[rule.selector])) {
-            //     selectorRules[rule.selector].push(rule.test)
-            // } else {
-            //     selectorRules[rule.selector] = [rule.test]
-            // }
-
-            // if(inputElement) {
-            //     inputElement.onblur = () => {
-            //         validate(inputElement , rule)
-            //     }
-            //     inputElement.oninput = () => {
-            //         oninputHandler(inputElement)
-            //     }
-            // }
             const inputElements = Array.from(formElement.querySelectorAll(rule.selector))
 
             inputElements.forEach(inputElement => {

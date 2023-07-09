@@ -13,11 +13,7 @@
                 <form action="" class="account-form log-in-form">
                     <h1 class="form__title">TẠO TÀI KHOẢN</h1>
                     <div class="form__group">
-                        <div>
-                            <div>
-                                <input type="text" class="form__input fullname" placeholder=" ">
-                            </div>
-                        </div>
+                        <input type="text" class="form__input fullname" placeholder=" ">
                         <label for="">Tên đăng nhập</label>
                         <span class="form__message"></span>
                     </div>
@@ -56,6 +52,7 @@
     Validator({
         formSelector: '.account-form', 
         formMessage: '.form__message',
+        formGroupSelector: '.form__group',
         rules: [
             Validator.isRequired('.fullname'),
             Validator.isRequired('.email'),
